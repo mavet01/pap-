@@ -284,7 +284,7 @@
     }
   </style>
 </head>
-<body>
+<>
   <div class="scene">
     <div class="table"></div>
 
@@ -305,11 +305,19 @@
 
       <div class="plate-area">
         <div class="letter" id="letter">
-          <h2>Per il mio papà</h2>
+          <h2>Per il nostro SUPER PAPÀ</h2>
           <p>
-            Grazie per tutto quello che fai, per la tua presenza, la tua forza
-            e il bene che mi dai ogni giorno. Ti voglio bene.
-            Buona Festa del Papà! 💙
+            Al papà che tutti vorrebbero, 
+            ma che nessuno, se non noi, ha (eh già),
+            al più grande esempio di come non lasciarsi abbattere mai.
+            Con lo sguardo da falco, 
+            libero e senza catene, va…
+            e mentre guida la sua Saab
+            chi lo conosce lo sa
+            ci vuole abilità.
+
+            Eeh già…
+            tanti auguri al nostro grande Papà.
           </p>
         </div>
 
@@ -334,21 +342,34 @@
       Schiaccia per spostare il piatto
     </button>
   </div>
+  
+  <audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
   <script>
     const plate = document.getElementById("plate");
     const letter = document.getElementById("letter");
     const actionBtn = document.getElementById("actionBtn");
+    const music = document.getElementById('music');
     let open = false;
 
     function togglePlate() {
-      open = !open;
-      plate.classList.toggle("open", open);
-      letter.classList.toggle("show", open);
-      actionBtn.textContent = open
-        ? "Schiaccia per rimettere il piatto"
-        : "Schiaccia per spostare il piatto";
-    }
+  open = !open;
+  plate.classList.toggle('open', open);
+  letter.classList.toggle('show', open);
+
+  actionBtn.textContent = open
+    ? 'Schiaccia per rimettere il piatto'
+    : 'Schiaccia per spostare il piatto';
+
+  // 🎵 MUSICA
+  if (open) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
 
     plate.addEventListener('click', togglePlate);
 plate.addEventListener('touchend', (e) => {
@@ -369,5 +390,6 @@ actionBtn.addEventListener('touchend', (e) => {
       }
     });
   </script>
+  
 </body>
 </html>
